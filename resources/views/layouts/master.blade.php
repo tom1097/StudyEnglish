@@ -104,21 +104,21 @@
 <body>
 <div class="wrapper">
     <nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
-                <div class="navbar-header" >
-                    <img id="logo" src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li style="margin-right: 50px;margin-top: 10px">Ong Thi Diem Phuc<img id="avt" src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width: 50px"></li>
-                        <li>
-                            <a data-toggle="modal" data-target="#myModal"><p>Log in</p></a>
-                        </li>
-                        <li class="separator hidden-lg hidden-md"></li>
-                    </ul>
-                </div>
+        <div class="container-fluid">
+            <div class="navbar-header" >
+                <img id="logo" src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
             </div>
-        </nav>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-right: 50px;margin-top: 10px">Ong Thi Diem Phuc<img id="avt" src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width: 50px"></li>
+                    <li>
+                        <a data-toggle="modal" data-target="#myModal"><p>Log in</p></a>
+                    </li>
+                    <li class="separator hidden-lg hidden-md"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     
 
     <div class="main-panel">
