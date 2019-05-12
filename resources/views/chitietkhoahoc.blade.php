@@ -22,15 +22,16 @@
     </div>
     <div class="row">
 
-        @if($video->description != null)  
+      @if($video->description != null)  
       <div class="col-lg-9 col-md-9" id="noidungvideo">
-        
         <label>Video subtitle:</label> <br>
         <label>{!! $video->description !!}</label>
       </div>
-
       @endif
 
+      /* 
+        Record mp3 function 
+      */
       <div class="col-lg-3 col-md-3">
         <button class="btn blue">Ghi âm</button>
       </div>
@@ -38,10 +39,20 @@
     <div class="row">
       <div class="col-lg-12 col-md-12" id="noidungvideo">
         <div>
+          /*
+            need some idea
+            1: which vacobulary?
+            2: how to auto transform
+          */
           <label>Some vocabularies:</label><br>
           <h4>Vocabulary exist here!</h4>
         </div>
         <div>
+          /*
+            need some idea
+            1: which grammar?
+            2: how to auto transform grammar
+          */
           <label>Ngữ pháp dùng trong đoạn văn</label><br>
         </div>
       </div>
@@ -51,9 +62,15 @@
         <label class="switch">
           <input type="checkbox" checked>
           <span class="slider round"></span>
+          /*
+            forward next video
+          */
         </label><label>Tự động chạy</label>
       </div>
       <div class="col-lg-3 col-md-3" style="font-size: 30px">
+        /*
+            forward next video
+          */
         <a href="">Bài tiếp theo <i class="fa fa-angle-double-right"></i></a>
       </div>
     </div>
@@ -63,9 +80,16 @@
     <nav>
       <div class="container-fluid">
         <div class="navbar-header" >
+          /*
+            -file pdf save on DB
+            - permission for user to download file
+          */
             <a><p>Giáo trình</p></a>
         </div>
         <div class="collapse navbar-collapse">
+          /*  
+            use FB comment
+          */
             <a><p>Thảo luận</p></a>
         </div>
       </div>
@@ -82,22 +106,5 @@
     </div>
 </div>
 
-<?php
-foreach(array('video', 'audio') as $type) {
-  if (isset($_FILES["${type}-blob"])) {
-  
-      echo 'uploads/';
-      
-      $fileName = $_POST["${type}-filename"];
-      $uploadDirectory = 'uploads/'.$fileName;
-      
-      if (!move_uploaded_file($_FILES["${type}-blob"]["tmp_name"], $uploadDirectory)) {
-          echo(" problem moving uploaded file");
-      }
-  
-      echo($fileName);
-  }
-}
 
-?>
 @endsection
