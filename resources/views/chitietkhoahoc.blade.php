@@ -81,7 +81,7 @@
       <div class="container-fluid">
         <div class="navbar-header" >
           /*
-            -file pdf save on DB
+            - file pdf save on DB
             - permission for user to download file
           */
             <a><p>Giáo trình</p></a>
