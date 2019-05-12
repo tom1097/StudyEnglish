@@ -6,7 +6,7 @@
     <nav>
       <div class="container-fluid">
         <div class="navbar-header" >
-            <a href=""><i class="fa fa-chevron-left"> Trở về</i></a>
+            <a href="{{  url()->previous() }}"><i class="fa fa-chevron-left"> Trở về</i></a>
         </div>
         <div class="collapse navbar-collapse navbar-right">
             <button class="btn red">Báo lỗi</button>
@@ -29,11 +29,15 @@
       </div>
       @endif
 
-      {{--  /* 
-        Record mp3 function 
-      */  --}}
-      <div class="col-lg-3 col-md-3">
-        <button class="btn blue">Ghi âm</button>
+      <div class="col-lg-12 col-md-12">
+          <h3>Record your sound</h3>
+          <p>
+            <button id="record" class="btn btn-primary btn-md">Record</button>
+            <button id="stopRecord"  class="btn btn-danger btn-md" disabled>Stop</button>
+          </p>
+          <p>
+            <audio id=recordedAudio></audio>
+          </p>
       </div>
     </div>
     <div class="row">
@@ -105,6 +109,9 @@
     </div>
     </div>
 </div>
+
+
+
 
 
 @endsection

@@ -1,26 +1,29 @@
-<script>
-
-var fileType = 'audio'; // or "audio"
-var fileName = 'ABCDEF.wav';  // or "wav"
-
-var formData = new FormData();
-formData.append(fileType + '-filename', fileName);
-formData.append(fileType + '-blob', blob);
-
-xhr('save.php', formData, function (fName) {
-    window.open(location.href + fName);
-});
-
-function xhr(url, data, callback) {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function () {
-        if(request.readyState == 4 && request.status == 200) {
-            callback(location.href + request.responseText);
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => { handlerFunction(stream) })
+function handlerFunction(stream) {
+    rec = new MediaRecorder(stream);
+    rec.ondataavailable = e => {
+        audioChunks.push(e.data);
+        if (rec.state == "inactive") {
+            let blob = new Blob(audioChunks, { type: 'audio/mpeg-3' });
+            recordedAudio.src = URL.createObjectURL(blob);
+            recordedAudio.controls = true;
+            recordedAudio.autoplay = false;
+            sendData(blob);
         }
-    };
-    request.open('POST', url);
-    request.send(data);
+    }
 }
+function sendData(data) { }
 
-alert("Hello");
-</script>
+record.onclick = e => {
+    record.disabled = true;
+    record.style.backgroundColor = "blue";
+    stopRecord.disabled = false;
+    audioChunks = [];
+    rec.start();
+}
+stopRecord.onclick = e => {
+    record.disabled = false;
+    stopRecord.disabled = true;
+    rec.stop();
+}
