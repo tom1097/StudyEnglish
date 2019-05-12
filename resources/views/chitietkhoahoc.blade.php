@@ -15,15 +15,22 @@
     </nav>
     <div style="">
       <video id="video" controls>
-        <source src="movie.mp4" type="video/mp4">
-        <source src="movie.ogg" type="video/ogg">
+        <source src="{{$video->source}}" style="width:100%" type="video/mp4">
+        <source src="{{$video->source}}" type="video/ogg">
         Your browser does not support the video tag.
       </video>
     </div>
     <div class="row">
+
+        @if($video->description != null)  
       <div class="col-lg-9 col-md-9" id="noidungvideo">
-        <label>Nội dung câu trong video</label>
+        
+        <label>Video subtitle:</label> <br>
+        <label>{!! $video->description !!}</label>
       </div>
+
+      @endif
+
       <div class="col-lg-3 col-md-3">
         <button class="btn blue">Ghi âm</button>
       </div>
@@ -31,10 +38,11 @@
     <div class="row">
       <div class="col-lg-12 col-md-12" id="noidungvideo">
         <div>
-          <label>Từ vựng của câu</label>
+          <label>Some vocabularies:</label><br>
+          <h4>Vocabulary exist here!</h4>
         </div>
         <div>
-          <label>Ngữ pháp dùng trong đoạn văn</label>
+          <label>Ngữ pháp dùng trong đoạn văn</label><br>
         </div>
       </div>
     </div>
@@ -65,17 +73,31 @@
     <div class="sidebar-wrapper">
         <ul style="font-size: 18px; margin:20px">
           <ul><h5><u><b>Danh sách bài học</b></u></h5>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 1</a></li>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 2</a></li>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 3</a></li>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 4</a></li>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 5</a></li>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 6</a></li>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 7</a></li>
-              <li class="sidebar-wrapper-li"><a href="#">Bài 8</a></li>
+            @foreach($other_videos as $child)
+              <li class="sidebar-wrapper-li"><a href="chitietkhoahoc/{{$child->idVideo}}">{{$child->nameVideo}}</a></li>
+            @endforeach
           </ul>
         </ul>
     </div>
     </div>
 </div>
+
+<?php
+foreach(array('video', 'audio') as $type) {
+  if (isset($_FILES["${type}-blob"])) {
+  
+      echo 'uploads/';
+      
+      $fileName = $_POST["${type}-filename"];
+      $uploadDirectory = 'uploads/'.$fileName;
+      
+      if (!move_uploaded_file($_FILES["${type}-blob"]["tmp_name"], $uploadDirectory)) {
+          echo(" problem moving uploaded file");
+      }
+  
+      echo($fileName);
+  }
+}
+
+?>
 @endsection
