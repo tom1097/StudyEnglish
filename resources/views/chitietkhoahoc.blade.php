@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 col-md-12" id="noidungvideo">
+      <div class="col-lg-9 col-md-9" id="noidungvideo">
         <div>
           {{--  /*
             need some idea
@@ -51,16 +51,50 @@
           <label>Some vocabularies:</label><br>
           <h4>Vocabulary exist here!</h4>
         </div>
+      </div>
+      <div class="col-lg-3 col-md-3" id="noidungvideo">
         <div>
-          {{--  /*
-            need some idea
-            1: which grammar?
-            2: how to auto transform grammar
-          */  --}}
-          <label>Ngữ pháp dùng trong đoạn văn</label><br>
+          <button class="btn">ghi âm</button>
         </div>
       </div>
     </div>
+     <div class="row">
+      <div class="col-lg-9 col-md-9" id="noidungvideo">
+        <div>
+          {{--  /*
+            need some idea
+            1: which vacobulary?
+            2: how to auto transform
+          */  --}}
+          <label>Some vocabularies:</label><br>
+          <h4>Vocabulary exist here!</h4>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3" id="noidungvideo">
+        <div>
+          <button class="btn">ghi âm</button>
+        </div>
+      </div>
+    </div>
+     <div class="row">
+      <div class="col-lg-9 col-md-9" id="noidungvideo">
+        <div>
+          {{--  /*
+            need some idea
+            1: which vacobulary?
+            2: how to auto transform
+          */  --}}
+          <label>Some vocabularies:</label><br>
+          <h4>Vocabulary exist here!</h4>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3" id="noidungvideo">
+        <div>
+          <button class="btn">ghi âm</button>
+        </div>
+      </div>
+    </div>
+    
     <div class="row">
       <div class="col-lg-9 col-md-9" id="noidungvideo">
         <label class="switch">
