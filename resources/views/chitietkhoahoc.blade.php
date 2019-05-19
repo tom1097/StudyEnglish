@@ -9,7 +9,7 @@
             <a href="{{  url()->previous() }}"><i class="fa fa-chevron-left"> Trở về</i></a>
         </div>
         <div class="collapse navbar-collapse navbar-right">
-            <button class="btn red">Báo lỗi</button>
+            <button class="btn btn-danger btn-md">Báo lỗi</button>
         </div>
       </div>
     </nav>
@@ -21,16 +21,20 @@
       </video>
     </div>
     <div class="row">
-
       @if($video->description != null)  
-      <div class="col-lg-9 col-md-9" id="noidungvideo">
+      <div class="col-lg-12 col-md-12" id="noidungvideo">
         <label>Video subtitle:</label> <br>
         <label>{!! $video->description !!}</label>
       </div>
       @endif
-
-      <div class="col-lg-12 col-md-12">
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-md-9">
           <h3>Record your sound</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-md-9">
           <p>
             <button id="record" class="btn btn-primary btn-md">Record</button>
             <button id="stopRecord"  class="btn btn-danger btn-md" disabled>Stop</button>
@@ -39,27 +43,36 @@
             <audio id=recordedAudio></audio>
           </p>
       </div>
+      <div class="col-lg-3 col-md-3" style="text-align: center;">
+          <div >
+          <button class="btn btn-info btn-md">ghi âm</button>
+        </div>
+      </div>
     </div>
-    <div class="row">
+    <div class="vocabulary" style="background-color: #efcfab82; padding: 7px; border-radius: 10px;border: 3px ridge #a9a198f5">
+      <div class="row">
       <div class="col-lg-9 col-md-9" id="noidungvideo">
         <div>
-          {{--  /*
-            need some idea
-            1: which vacobulary?
-            2: how to auto transform
-          */  --}}
+          
+            need some idea</br>
+            1: which vacobulary?</br>
+            2: how to auto transform</br>
+            1: which vacobulary?</br>
+            2: how to auto transform</br>
+            1: which vacobulary?</br>
+            2: how to auto transform</br>
+          
           <label>Some vocabularies:</label><br>
           <h4>Vocabulary exist here!</h4>
         </div>
       </div>
       <div class="col-lg-3 col-md-3" id="noidungvideo">
         <div>
-          <button class="btn">ghi âm</button>
         </div>
       </div>
     </div>
      <div class="row">
-      <div class="col-lg-9 col-md-9" id="noidungvideo">
+      <div class="col-lg-12 col-md-12" id="noidungvideo">
         <div>
           {{--  /*
             need some idea
@@ -70,14 +83,9 @@
           <h4>Vocabulary exist here!</h4>
         </div>
       </div>
-      <div class="col-lg-3 col-md-3" id="noidungvideo">
-        <div>
-          <button class="btn">ghi âm</button>
-        </div>
-      </div>
-    </div>
+     </div>
      <div class="row">
-      <div class="col-lg-9 col-md-9" id="noidungvideo">
+      <div class="col-lg-12 col-md-12" id="noidungvideo">
         <div>
           {{--  /*
             need some idea
@@ -88,12 +96,7 @@
           <h4>Vocabulary exist here!</h4>
         </div>
       </div>
-      <div class="col-lg-3 col-md-3" id="noidungvideo">
-        <div>
-          <button class="btn">ghi âm</button>
-        </div>
-      </div>
-    </div>
+     </div>
     
     <div class="row">
       <div class="col-lg-9 col-md-9" id="noidungvideo">
@@ -112,23 +115,24 @@
         <a href="">Bài tiếp theo <i class="fa fa-angle-double-right"></i></a>
       </div>
     </div>
+    </div>
   </div>
    
   <div class="col-lg-3 col-md-3">
     <nav>
       <div class="container-fluid">
-        <div class="navbar-header" >
+        <div class="navbar-header" style="float:left;">
           {{--  /*
             - file pdf save on DB
             - permission for user to download file
           */  --}}
-            <a><p>Giáo trình</p></a>
+            <a><p><b style="font-size: 20px;">Giáo trình</b></p></a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" style="float:right;">
           {{--  /*  
             use FB comment
           */  --}}
-            <a><p>Thảo luận</p></a>
+            <a><p><b style="font-size: 20px;">Thảo luận</b></p></a>
         </div>
       </div>
     </nav>

@@ -55,7 +55,7 @@ h6 {
 
 p {
 	font-size: 14px;
-	color: #b4b4b4;
+	color: #985757;
 	line-height: 2;
 }
 
@@ -75,6 +75,12 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
+}
+
+b:hover,
+b:focus {
+	color: #582c2c;
+	text-decoration: underline;
 }
 
 ul,
@@ -2097,7 +2103,7 @@ ol {
 --------------------------*/
 
 
-body{ background: #fafafa;}
+body{ background: #d6bc9f4a;}
 .widget-area.blank {
 background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
 -webkit-box-shadow: none;
@@ -2230,8 +2236,8 @@ margin-right: 7px;
     margin-top: -10px;
     padding: 20px;
     padding-top: 40px;
-    border-radius: 5px
-    
+    border-radius: 5px;
+    border: 1px solid #d0c5b9f5;
 }
 
 #logo{
@@ -2292,12 +2298,13 @@ list-style: none;
 }
 
 .sidebar-wrapper{
-	margin-top: 25px;
+	margin-top: 35px;
 	background-color:#d6c1a9f5;
 	border-radius: 10px;
 	padding: 7px;
 	text-align: left;
 	height: 800px;
+	border: 2px solid #a9a198f5;
 }
 
 .sidebarNav{
