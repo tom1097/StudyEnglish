@@ -13,12 +13,8 @@
         </div>
       </div>
     </nav>
-    <div style="">
-      <video id="video" controls>
-        <source src="{{$video->source}}" style="width:100%" type="video/mp4">
-        <source src="{{$video->source}}" type="video/ogg">
-        Your browser does not support the video tag.
-      </video>
+    <div style="margin-top: 30px;">
+        <iframe style="width:100%; height: 500px" src="{{$video->source}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="row">
       @if($video->description != null)  
