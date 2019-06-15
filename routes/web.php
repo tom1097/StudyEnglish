@@ -1,6 +1,4 @@
 <?php
-
-Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('/', 'VideoController@view');
 Route::get('video/{id}', 'VideoController@view')->name('viewvideo');
 

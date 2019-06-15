@@ -43,8 +43,9 @@
 
             {{--  **************   Record button handle here ************** --}}
             <div class="col-lg-12 mt-2">
-                <button type="button" class="btn btn-primary"><i class="fa fa-microphone" aria-hidden="true"></i> Record</button>
-                <button type="button" class="btn btn-danger"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+                <button type="button" id="record" class="btn btn-primary"><i class="fa fa-microphone" aria-hidden="true"></i> Record</button>
+                <button type="button" id="stopRecord" class="btn btn-danger"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+                <audio id=recordedAudio style="padding-top:10px"></audio>
             </div>
         </div>
         <div class="row mt-4">
@@ -88,7 +89,17 @@
                     <h3 class="mt-2">Writing</h3>
                     <div>
                         <p>{!! $video->writing !!}</p>  
-                        <p>Please send us your feed back ideas !! </p>                   
+                        <p>Please send us your feed back ideas! <br/>admin@studyenglish.com </p>                   
+                    </div>
+                </div>
+
+                {{--  #New words  --}}
+                <div class="content-title">
+                    <h3 class="mt-2"> New Words</h3>
+                    <div>
+                        @foreach($new_words as $child)
+                        <p><b>{{$child->word}}</b> ({{$child->type}}) : {{$child->meaning}}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -103,41 +114,10 @@
                 @foreach($relate_videos as $child)
                 <div class="row">
                     <div class="col-lg-4">
-                        <a href=""><img src="https://via.placeholder.com/150" width="100%" height="100%" alt=""></a>
+                        <a href="{{ route('viewvideo',['id'=> $child->id]) }}"><img src="{{$child->img}}" width="100%" height="100%" alt="{{$child->title}}"></a>
                     </div>
                     <div class="col-lg-8">
-                        <a href="" style="font-size: 16px;">Let's Learn English Lesson 38 Speaking Practice</a>
-                    </div>
-                    <hr class="hr-tritv">
-                </div>
-
-                
-                <div class="row">
-                    <div class="col-lg-4">
-                        <a href=""><img src="https://via.placeholder.com/150" width="100%" height="100%" alt=""></a>
-                    </div>
-                    <div class="col-lg-8">
-                        <a href="" style="font-size: 16px;">Let's Learn English Lesson 38 Speaking Practice</a>
-                    </div>
-                    <hr class="hr-tritv">
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4">
-                        <a href=""><img src="https://via.placeholder.com/150" width="100%" height="100%" alt=""></a>
-                    </div>
-                    <div class="col-lg-8">
-                        <a href="" style="font-size: 16px;">Let's Learn English Lesson 38 Speaking Practice</a>
-                    </div>
-                    <hr class="hr-tritv">
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4">
-                        <a href=""><img src="https://via.placeholder.com/150" width="100%" height="100%" alt=""></a>
-                    </div>
-                    <div class="col-lg-8">
-                        <a href="" style="font-size: 16px;">Let's Learn English Lesson 38 Speaking Practice</a>
+                        <a href="{{ route('viewvideo',['id'=> $child->id]) }}" style="font-size: 16px;">{{$child->title}}</a>
                     </div>
                     <hr class="hr-tritv">
                 </div>
@@ -172,5 +152,42 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => { handlerFunction(stream) })
+        function handlerFunction(stream) {
+            rec = new MediaRecorder(stream);
+            rec.ondataavailable = e => {
+                audioChunks.push(e.data);
+                if (rec.state == "inactive") {
+                    let blob = new Blob(audioChunks, { type: 'audio/mpeg-3' });
+                    recordedAudio.src = URL.createObjectURL(blob);
+                    recordedAudio.controls = true;
+                    recordedAudio.autoplay = false;
+                    sendData(blob);
+                }
+            }
+        }
+        function sendData(data) { }
+        $('#stopRecord').hide();
+        $('#recordedAudio').hide();
+        record.onclick = e => {
+            record.disabled = true;
+            $('#stopRecord').show();
+            $('#recordedAudio').hide();
+            record.style.backgroundColor = "blue";
+            stopRecord.disabled = false;
+            audioChunks = [];
+            rec.start();
+        }
+        stopRecord.onclick = e => {
+            record.disabled = false;
+            $('#stopRecord').hide();
+            $('#recordedAudio').show();
+            stopRecord.disabled = true;
+            rec.stop();
+        }
+    </script>
 </body>
 </html>
