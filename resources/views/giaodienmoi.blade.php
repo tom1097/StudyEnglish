@@ -32,20 +32,18 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12 header-title text-center">
-                <h3>Lesson 38: She's My Best Friend!</h3>
+                <h3>Lesson {{$video->id}}: {{$video->title}}</h3>
             </div>
             <hr/>
         </div>
         <div class="row mt-1">
             <div class="col-lg-12">
                 <div class="video">
-                        <iframe width="100%" height="100%" 
-                        src="https://www.youtube.com/embed/UPO-xWfvA4o" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
+                        <iframe src="{{$video->source_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" scrolling="no" width="100%" height="100%" allowfullscreen></iframe>
                 </div>
             </div>
+
+            {{--  **************   Record button handle here ************** --}}
             <div class="col-lg-12 mt-2">
                 <button type="button" class="btn btn-primary"><i class="fa fa-microphone" aria-hidden="true"></i> Record</button>
                 <button type="button" class="btn btn-danger"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
@@ -57,36 +55,54 @@
                     <h3 class="mt-2">Summary</h3>
                     <div>
                         <p>
-                            In this lesson, Anna's best friend from her hometown, Penelope, visits Washington, D.C. Anna tells Penelope about her friends and her job. Is Penelope going to make a change in her life?
+                            {!! $video->summary !!}
                         </p>
                     </div>
                 </div>
 
                 <div class="content-title">
-                    <h3 class="mt-2">Vocabulary</h3>
+                    <h3 class="mt-2">Speaking</h3>
                     <div>
-                        <p>
-                            In this lesson, Anna's best friend from her hometown, Penelope, visits Washington, D.C. Anna tells Penelope about her friends and her job. Is Penelope going to make a change in her life?
-                        </p>
+                        <p>{!! $video->speaking !!}</p>
+                        <iframe src="{{$video->speaking_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" scrolling="no" width="100%" height="420"  allowfullscreen></iframe>                   
+                    </div>
+                </div>
+                {{--  #Pronunciation  --}}
+                <div class="content-title">
+                    <h3 class="mt-2">Pronunciation</h3>
+                    <div>
+                        <p>{!! $video->pronunciation !!}</p>
+                        <iframe src="{{$video->pronunciation_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" scrolling="no" width="100%" height="420"  allowfullscreen></iframe>           
                     </div>
                 </div>
 
-                
+                {{--  #Conversation  --}}
                 <div class="content-title">
                     <h3 class="mt-2">Conversation</h3>
                     <div>
-                        <p>
-                            In this lesson, Anna's best friend from her hometown, Penelope, visits Washington, D.C. Anna tells Penelope about her friends and her job. Is Penelope going to make a change in her life?
-                        </p>
+                        <iframe src="{{$video->conversation_script}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" scrolling="no" width="100%"   allowfullscreen></iframe>   
+                        <p>{!! $video->conversation !!}</p>                     
+                    </div>
+                </div>
+
+                {{--  #Writing  --}}
+                <div class="content-title">
+                    <h3 class="mt-2">Writing</h3>
+                    <div>
+                        <p>{!! $video->writing !!}</p>  
+                        <p>Please send us your feed back ideas !! </p>                   
                     </div>
                 </div>
             </div>
 
+
+            {{--  Danh sách các video khác trong DB, render random them  --}}
             <div class="col-lg-4">
                 <div class="related-title">
-                    <h3>Related</h3>
+                    <h3>Related Videos</h3>
                     <hr>
                 </div>
+                @foreach($relate_videos as $child)
                 <div class="row">
                     <div class="col-lg-4">
                         <a href=""><img src="https://via.placeholder.com/150" width="100%" height="100%" alt=""></a>
@@ -127,9 +143,7 @@
                     </div>
                     <hr class="hr-tritv">
                 </div>
-
-
-
+                @endforeach
             </div>
         </div>
     </div>
