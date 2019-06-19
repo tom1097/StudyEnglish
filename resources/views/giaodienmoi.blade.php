@@ -41,12 +41,7 @@
                 </div>
             </div>
 
-            {{--  **************   Record button handle here ************** --}}
-            <div class="col-lg-12 mt-2">
-                <button type="button" id="record" class="btn btn-primary"><i class="fa fa-microphone" aria-hidden="true"></i> Record</button>
-                <button type="button" id="stopRecord" class="btn btn-danger"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
-                <audio id=recordedAudio style="padding-top:10px"></audio>
-            </div>
+            
         </div>
         <div class="row mt-4">
             <div class="col-lg-8">
@@ -78,8 +73,15 @@
                 {{--  #Conversation  --}}
                 <div class="content-title">
                     <h3 class="mt-2">Conversation</h3>
+                    
                     <div>
                         <iframe src="{{$video->conversation_script}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" scrolling="no" width="100%"   allowfullscreen></iframe>   
+                        {{--  **************   Record button handle here ************** --}}
+                        <div class="col-lg-12 mt-2">
+                            <button type="button" id="record" class="btn btn-primary"><i class="fa fa-microphone" aria-hidden="true"></i> Record</button>
+                            <button type="button" id="stopRecord" class="btn btn-danger"><i class="fa fa-stop" aria-hidden="true"></i> Stop</button>
+                            <audio id=recordedAudio style="padding-top:10px"></audio>
+                        </div>
                         <p>{!! $video->conversation !!}</p>                     
                     </div>
                 </div>
